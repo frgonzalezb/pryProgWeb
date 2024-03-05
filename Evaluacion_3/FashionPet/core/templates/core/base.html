@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es-CL">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>FASHION PET</title>
+  {% load static %}
+  {% block css %}
+  <link href="css/form-validation.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="CSS/Style.css"> -->
+  {% endblock %}
+</head>
+
+<body>
+
+  <!-- Aquí está el header, incluyendo login y registrar -->
+  <header>
+    <div class="row">
+      <div class="col-3"> </div>
+      <div class="col-7 text-center">
+        <a href="{% url 'inicio'%}"><img src="{% static 'core/'%}img/logo_s.png" alt=""></a>
+      </div>
+      <div class="col-1 float-end py-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mx-auto mb-0 mb-lg-0">
+                <!-- Login y registro -->
+                {% if user.is_authenticated %}
+                <li>
+                  <!-- Esto sirve para mostrar que uno está logueado -->
+                  <a href="#">Bienvenid@: {{ user.username }}</a>
+                </li>
+                <!-- Esto otro es para logout -->
+                <li>
+                  <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </li>
+                <!-- Esto de aquí en caso que no esté autenticado -->
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'registro' %}">Regístrate</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}"><img src="{% static 'core/'%}img/usuario.png" width="25" alt=""></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'registro' %}"><img src="{% static 'core/'%}img/usuarionewnew.png" width="23" alt=""></a>
+                    </li> -->
+                {% endif %}
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="col-1 float-none"></div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-0 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'inicio'%}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'productos'%}">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quienes_somos'%}">Quienes somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacto'%}">Contacto</a>
+            </li>
+            {% if user.is_authenticated and user.is_staff %}
+            <li class="nav-item">
+              <a href="{% url 'listado_productos'%}" class="nav-link">CRUD Listado productos</a>
+            </li>
+            {% endif %}
+          </ul>
+          <!-- Buscador -->
+          <form class="d-flex mx-auto" action="{% url 'buscador' %}" method="GET">
+            <input class="form-control me-2" name="s" type="search" placeholder="" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Este es el BLOQUE DE CONTENIDO -->
+  <div id="contenido" class="container">
+    {% block contenido %}
+    <!-- Aquí se cargará el contenido de las páginas auxiliares que se extienden de esta -->
+    {% endblock %}
+  </div>
+
+  <!-- Aquí va el footer -->
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2020–2022 Tienda Fashion Pet</p>
+  </footer>
+
+  <!-- Aquí se carga el JS de Bootstrap y de Google -->
+  {% block javascript %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  {% endblock %}
+</body>
+
+</html>

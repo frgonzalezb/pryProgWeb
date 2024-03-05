@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+<!-- Título -->
+<div class="py-5 text-center">
+    <div class="col"></div>
+    <div class="col">
+        <h3>Resultados de búsqueda</h3>
+    </div>
+    <div class="col"></div>
+</div>
+
+<!-- Resultados de búsqueda -->
+<div class="container">
+    <div class="row">
+        {% for producto in object_list %}
+        <div class="col-md-3">
+            <div class="card h-100">
+                <a href="{% url 'detalle_producto' producto.id producto.slug %}"><img class="card-img-top"
+                    src="{% static 'core/'%}img/productos/producto_{{producto.id}}.jpg"
+                    alt="Card image cap"></a>
+                <div class="card-body" style:"text-align: center;">
+                    <h4 class="card-title">{{producto.nombre}}</h4>
+                    <h6 class="card-title text-danger">Precio: $ {{producto.precio}}&nbsp</h6>
+                    <p class="card-text">{{producto.descripcion}}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success">Añadir al
+                        carrito</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="card-body text-center">
+            <h5>No se encontraron productos para esta búsqueda.</h5>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

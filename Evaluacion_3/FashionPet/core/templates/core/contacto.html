@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+      <div class="container">
+        <main>
+          <div class="row">
+            <div class="py-5 text-center">
+              <div class="col"></div>
+              <div class="col">
+                <h1>Contáctenos</h1>
+                <p class="lead">
+                  Si desea contactarnos, puede hacerlo a través del siguiente formulario.
+                </p>
+              </div>
+              <div class="col"></div>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <div class="row g-8">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <form class="needs-validation" nov>
+                <div class="row g-3">
+                  <!-- Nombres -->
+                  <div class="col-sm-6">
+                    <label for="nombres" class="form-label">Nombres</label>
+                    <input type="text" class="form-control" id="nombres" placeholder="Ingrese aquí su(s) nombre(s)" value="" required>
+                    <div class="invalid-feedback">ERROR: Debe ingresar su nombre.</div>
+                  </div>
+                  <!-- Apellidos -->
+                  <div class="col-sm-6">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" placeholder="Ingrese aquí su(s) apellido(s)" value="" required>
+                    <div class="invalid-feedback">ERROR: Debe ingresar su apellido.</div>
+                  </div>
+                  <!-- Email -->
+                  <div class="col-12">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="correo@dominio.com" value="" required>
+                    <div class="invalid-feedback">ERROR: Debe ingresar su correo electrónico.</div>
+                  </div>
+                  <!-- Asunto -->
+                  <div class="col-12">
+                    <label for="asunto" class="form-label">Asunto</label>
+                    <input type="text" class="form-control" id="asuno" placeholder="Ingrese aquí el asunto de su mensaje" value="" required>
+                    <div class="invalid-feedback">ERROR: Debe ingresar un asunto.</div>
+                  </div>
+                  <!-- Mensaje -->
+                  <div class="col-12">
+                    <label for="mensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+                    <div class="invalid-feedback">ERROR: Debe ingresar un mensaje.</div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Botón ENVIAR -->
+                <div class="row">
+                  <div class="col"></div>
+                  <div class="col"><button type="submit" class="w-100 btn btn-primary">Enviar</button></div>
+                  <div class="col"></div>
+                </div>
+              </form>
+            </div>
+            <div class="col-3"></div>
+          </div>
+        </main>
+      </div>
+
+{% endblock %}

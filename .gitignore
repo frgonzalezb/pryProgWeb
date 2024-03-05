@@ -1,0 +1,11 @@
+__pycache__/
+migrations/
+
+.env
+.venv/
+
+*.sqlite3
+
+*.pdf
+*.rar
+*.zip

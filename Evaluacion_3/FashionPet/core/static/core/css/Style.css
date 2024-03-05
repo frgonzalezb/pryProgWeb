@@ -1,0 +1,25 @@
+#altura{
+    margin-top: 7px;
+}
+
+.alturabarra{
+    height: 30px;
+}
+
+.fontsucursal{
+    margin-right: 300px;
+    text-align: center;
+}
+
+.colornaranja{
+    background-color: orange;
+    color: white;
+    border-color: orange;
+}
+
+body{
+    /* background-image: url("../img/1acc35f0605a9f9c63f794b73dcced6007ca3cb5.jpg"); */
+    /* background-size: 90rem; */
+    /* background-repeat: no-repeat; */
+
+}

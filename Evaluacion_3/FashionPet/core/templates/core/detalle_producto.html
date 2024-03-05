@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container">
+    <div class="row">
+        <!-- Aquí va la imagen del producto -->
+        <div class="col-md-4">
+            <img src="{% static 'core/'%}img/productos/producto_{{producto.id}}.jpg" alt="" class="img-fluid">
+        </div>
+        <!-- Aquí va la descripción del producto -->
+        <div class="col-md-6">
+            <h3 class="my-3">{{producto.nombre}}</h3>
+            <p>{{producto.descripcion}}</p>
+            <h4 class="my-3">Precio: $ {{producto.precio}}</h6>
+            <div><a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success">Añadir al
+                carrito</a></div>
+        </div>
+        <!-- Sumario del carrito de compras a la derecha de la página -->
+        <div class="col-md-2">
+            <!-- Aquí se agrega el widget -->
+            {% include "carrito/widget.html" %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
